@@ -4,7 +4,7 @@
 * Criação de modelo de dados para o mapeamento de entidades em bancos de dados
 * Desenvolvimento de operações de gerenciamento de fazendas (Cadastro(com upload de arquivos), leitura e atualização).
 
-Para executar o projeto no terminal, digite o seguinte comando:
+Para executar o projeto:
 
 shell script
 ```
