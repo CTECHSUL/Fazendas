@@ -16,6 +16,7 @@ python3 -m pip install django-money
 ```
 git clone https://github.com/CTECHSUL/Fazendas
 ```
+```
 cd Fazendas
 ```
 ```
