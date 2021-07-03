@@ -8,13 +8,7 @@ Para executar o projeto:
 
 shell script
 ```
-python3 -m pip install django
-```
-```
-python3 -m pip install django-money
-```
-```
-python3 -m pip install Pillow
+python3 -m pip install django django-money Pillow
 ```
 ```
 git clone https://github.com/CTECHSUL/Fazendas
