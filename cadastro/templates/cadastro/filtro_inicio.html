@@ -1,0 +1,108 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/filtro_inicio.css' %}">
+<script type="text/javascript" src="{% static 'js/separator.js' %}"></script>
+<body>
+
+<form id="busca" action="{% url 'inicio' %}">
+  <div class="form-row">
+    <div class="col-md-2 mb3">
+      <label>Estado:</label>
+      {{ form.estado }}
+    </div>
+    <div class="col-md-2 mb3">
+      <label>Área mínima:</label>
+        {{ form.area_min }}
+    </div>
+    <div class="slidecontainer col-md-2 ">
+      <input type="range" step="100" min="0" max="5000" value="0" 
+      class="slider" name="range_area_min" 
+      oninput="this.form.area_min.value=thousandSeparator(this.value)">
+    </div>
+    <div class="col-md-2 mb3">
+      <label>Valor mínimo:</label>
+        {{ form.valor_min }}
+    </div>
+    <div class="slidecontainer col-md-2 ">
+      <input type="range" step="1000" min="0" max="10000000" value="0" 
+      class="slider" name="range_valor_min" 
+      oninput="this.form.valor_min.value=thousandSeparator(this.value)">
+    </div>
+  </div>
+
+  <div class="form-row">
+    <div class="col-md-2 mb3">
+      <label>Município:</label>
+      {{ form.municipio }}
+    </div>
+  
+    <div class="col-md-2 mb3">
+      <label>Área máxima:</label>
+      {{ form.area_max }}
+    </div>
+    <div class="slidecontainer col-md-2 ">
+      <input type="range" step="100" min="0" max="500000" value="0" 
+      class="slider" name="range_area_max" 
+      oninput="this.form.area_max.value=thousandSeparator(this.value);">
+    </div>
+    <div class="col-md-2 mb3">
+      <label>Valor máxima:</label>
+      {{ form.valor_max }}
+    </div>
+    <div class="slidecontainer col-md-2 ">
+      <input type="range" step="100000" min="0" max="1000000000" value="0" 
+      class="slider" name="range_valor_max" 
+      oninput="this.form.valor_max.value=thousandSeparator(this.value); ">
+    </div>
+  </div>
+  {% if erro %}
+    <h3 style="text-align: center; color:red; font-weight: bolder;">ERRO NO PREENCHIMENTO DOS CAMPOS...</h3>
+    <script>
+      alert('ERRO NO PREENCHIMENTO!!! PREENCHA APENAS COM LETRAS OU NÚMEROS OS RESPECTIVOS CAMPOS {{ erro }}')
+    </script>
+    <h5 style="text-align: center; color:red; font-weight: bolder;">CONFIRA OS DADOS INSERIDOS NOS CAMPOS</h5>
+  {% endif %}
+  <div style="margin-top: 10px; margin-bottom: 10px;" class="form-row">
+    
+    <button id="btn-busca" class="btn btn-outline-success my-2 my-sm-0" type="button" 
+    onclick="this.form.estado.value=''; 
+    this.form.area_min.value=''; 
+    this.form.valor_min.value=''; 
+    this.form.municipio.value=''; 
+    this.form.area_max.value=''; 
+    this.form.valor_max.value='';">Limpar</button>
+    <button id="btn-busca" class="btn btn-outline-success my-2 my-sm-0" type="submit">Buscar</button>
+  </div>
+</form>
+
+
+
+<ul class="list-group">
+  {% if form.is_valid %}
+  {% for fazenda in fazendas %}
+  <li class="list-group-item">
+      <span class="text-info">Nome: </span> <span>{{ fazenda.nome }}</span>
+      <br>
+      <span class="text-info">Estado: </span><span>{{ fazenda.estado }}</span>
+      <br>
+      <span class="text-info">Município: </span><span>{{ fazenda.municipio }}</span>
+      <br>
+      <span class="text-info">Área: </span><span>{{ fazenda.area_total }} Hectare</span>
+      <br>
+      <span class="text-info">Valor: </span><span>{{ fazenda.valor }}</span>
+      <br>
+      <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" 
+      href="{% url 'fazenda_view' fazenda.pk  %}">Ver Fazenda</a>
+      <a class="btn btn-primary btn-sm active" role="button" aria-pressed="true" 
+      href="{% url 'fazenda_view' fazenda.pk %}">Baixar PDF</a></li>
+      {% endfor %}
+  </li>
+</ul>
+{% endif %}
+</body>
+{% endblock %}
+

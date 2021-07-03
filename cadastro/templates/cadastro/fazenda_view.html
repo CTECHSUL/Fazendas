@@ -1,0 +1,156 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/modal.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/tabela.css' %}">
+
+<h1 class="titulo">{{ fazenda.nome }}</h1>
+{% csrf_token %}
+<body>
+
+<div class="btn-container">
+  <a id="editar" class="btn btn-primary btn-sm active" style="font-size: large;" role="button" 
+  aria-pressed="true" href="{% url 'editar_cadastro' fazenda.pk %}">Editar</a>
+</div>
+  <div id="desktop" class="table-responsive">
+    <table id="desktop" class="table">
+      <tr>
+        <th>Município:</th>
+        <th>Área total:</th>
+        <th>Área aberta:</th>
+        <th>Tipos de cultura:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.municipio }} - {{ fazenda.estado }}</td>
+        <td>{{ fazenda.area_total }} Hectare</td>
+        <td>{{ fazenda.area_aberta }} Hectare</td>
+        <td>{{ fazenda.cultura }}</td>
+      </tr>
+      <tr>
+        <th>Infraestrutura:</th>
+        <th>Maquinário:</th>
+        <th>Referências de localização:</th>
+        <th>Coordenadas:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.infra }}</td>
+        <td>{{ fazenda.maquinario }}</td>
+        <td>{{ fazenda.local_ref }}</td>
+        <td>{{ fazenda.coordenada }}</td>
+      </tr>
+      <tr>  
+        <th>Valor:</th>
+        <th>Observações:</th>
+        <th>Encaminhado por:</th>
+        <th>Ofertada para:</th>    
+      </tr>
+      <tr>
+        <td>{{ fazenda.valor }}</td>
+        <td>{{ fazenda.obs }}</td>
+        <td>{{ fazenda.encaminhado }}</td>
+        <td>{{ fazenda.oferta }}</td>
+      </tr>
+    </table>
+    <hr>
+  </div>
+  <div id="div-table-mobile" class="table-responsive">
+    <table id="table-mobile" class="table">
+      <tr>
+        <th>Município:</th>
+        <th>Área total:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.municipio }} - {{ fazenda.estado }}</td>
+        <td>{{ fazenda.area_total }} Hectare</td>
+      </tr>
+
+      <tr>
+        <th>Área aberta:</th>
+        <th>Tipos de cultura:</th>
+      </tr>  
+      <tr>
+        <td>{{ fazenda.area_aberta }} Hectare</td>
+        <td>{{ fazenda.cultura }}</td>
+      </tr>
+
+      <tr>
+        <th>Infraestrutura:</th>
+        <th>Maquinário:</th>
+      </tr>
+
+      <tr> 
+        <td>{{ fazenda.infra }}</td>
+        <td>{{ fazenda.maquinario }}</td>
+      </tr>
+      <tr>
+        <th>Referências de localização:</th>
+        <th>Coordenadas:</th>
+      </tr>
+      <tr>
+        
+        <td>{{ fazenda.local_ref }}</td>
+        <td>{{ fazenda.coordenada }}</td>
+      </tr>
+      <tr>  
+        <th>Valor:</th>
+        <th>Observações:</th>
+      </tr>
+      <tr>
+        <td>{{ fazenda.valor }}</td>
+        <td>{{ fazenda.obs }}</td>
+      </tr>
+
+      <tr>
+        <th>Encaminhado por:</th>
+        <th>Ofertada para:</th>    
+      </tr>
+      <tr>
+        <td>{{ fazenda.encaminhado }}</td>
+        <td>{{ fazenda.oferta }}</td>
+      </tr>
+      
+    </table>
+    <hr>
+  </div>
+<div class="body_content">
+    {% for img in imagens %}
+    <img id="myImg" onclick="onClick(this)" class="img_fazenda" src="/media/{{ img }}" alt="">
+    {% endfor %}
+    <div id="myModal" class="modal">
+        <span class="close" onclick="">&times;</span>
+        <img class="modal-content" id="img01">
+        <div id="caption"></div>
+    </div>
+</div>
+<div class="body_content">
+  <h1 style="margin-top: 50px; margin-bottom: 50px;" class="titulo">Vídeos</h1>
+  {% for vid in videos %}
+  <video  controls>
+    <source src="/media/{{ vid }}">
+  </video>
+  {% endfor %}
+</div>
+
+<div style="margin-bottom: 100px;" class="body_content">
+  <h1 style="margin-top: 50px;" class="titulo">Áudios</h1>
+  {% for aud in audios %}
+  <video  controls>
+    <source src="/media/{{ aud }}">
+  </video>
+  {% endfor %}
+</div>
+<script>
+document.getElementsByClassName("close")[0].onclick = function () {
+    modal.style.display = "none";
+}
+if (Modernizr.mq('(max-width: 800px)')) {
+    document.getElementsByClassName("table").classList.add("table-responsive");
+    document.getElementsByClassName("table").classList.remove("table");
+}
+</script>
+<footer>
+    {% endblock %}
+</footer>

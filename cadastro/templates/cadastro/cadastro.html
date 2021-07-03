@@ -1,0 +1,66 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<link rel="stylesheet" type="text/css" href="{% static 'css/cadastro.css' %}">
+<body>
+{% if erro %}
+<script>
+  alert('{{ erro }}')
+</script>
+{% endif %}
+<h1>Cadastro de Fazenda</h1>
+<div class="form-container">
+  <form method="POST"> 
+    {% csrf_token %}
+    <div class="form-box">
+      <div class="col">
+        <label>Nome:</label>
+        {{ form.nome }} 
+        <label>Município:</label>
+        {{ form.municipio }}
+        <label>Estado:</label>
+        {{ form.estado }}
+        <label>Área total:</label>
+        {{ form.area_total }}
+        <label>Área aberta:</label>
+        {{ form.area_aberta }}
+        <label>Cultura:</label>
+        {{ form.cultura }}
+      </div>
+      
+      <div class="col">
+        <label>Referência de localização:</label>
+        {{ form.local_ref }}
+        <label>Coordenadas:</label>
+        {{ form.coordenada }}<br>
+        <label>Valor:</label>
+        {{ form.valor }}
+        <br><label>Encaminhada por:</label>
+        {{ form.encaminhado }}
+        <label>Ofertada para:</label>
+        {{ form.oferta }}
+      </div>
+      <div class="col">
+        <label>Infraestrutura:</label>
+        {{ form.infra }}
+        <label>Maquinário:</label>
+        {{ form.maquinario }}
+        <label>Observações:</label>
+        {{ form.obs }}
+      </div>
+      
+    </div>
+    <div class="btn-row">
+    <input style="font-size: large;" class="btn btn-primary btn-sm active col-md-2" type="submit" value="Enviar">
+  </div>
+  </form>
+</div>
+</body>
+
+<footer style="margin-top: 100px;">
+
+</footer>
+{% endblock %}

@@ -1,0 +1,31 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/modal.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/cadastro.css' %}">
+<h1>Cadastro de Fazenda</h1>
+<div class="form-container">
+  <form class="form-media" enctype="multipart/form-data" method="POST"> 
+    {% csrf_token %}
+    <div class="form-box">
+      <div class="col">
+        Imagens:<br>
+        {{ form.imagens }}<br><br>
+        Vídeos:<br>
+        {{ form.videos }}<br><br>
+        Áudios:<br>
+        {{ form.audios }}<br><br>
+    </div>
+  </div>
+</div>
+  <div class="btn-row">
+    <input style="font-size: large;" class="btn btn-primary btn-sm active col-md-2" type="submit" value="Enviar">
+  </div>
+  </form>
+<footer>
+
+</footer>
+{% endblock %}

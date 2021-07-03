@@ -1,0 +1,116 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+<script type="text/javascript" src="{% static 'js/modal.js' %}"></script>
+<link rel="stylesheet" type="text/css" href="{% static 'css/modal.css' %}">
+<link rel="stylesheet" type="text/css" href="{% static 'css/cadastro.css' %}">
+
+<h1>Cadastro de Fazenda</h1>
+<body>
+{% if erro %}
+<script>
+  alert('{{ erro }}')
+</script>
+{% endif %}
+<div class="form-container">
+  <form method="POST"> 
+    {% csrf_token %}
+    <div class="form-box">
+      <div class="col">
+        <label>Nome:</label>
+        {{ form.nome }} 
+        <label>Município:</label>
+        {{ form.municipio }}
+        <label>Estado:</label>
+        {{ form.estado }}
+        <label>Área total:</label>
+        {{ form.area_total }}
+        <label>Área aberta:</label>
+        {{ form.area_aberta }}
+        <label>Cultura:</label>
+        {{ form.cultura }}
+      </div>
+      
+      <div class="col">
+        <label>Referência de localização:</label>
+        {{ form.local_ref }}
+        <label>Coordenadas:</label>
+        {{ form.coordenada }}<br>
+        <label>Valor:</label>
+        {{ form.valor }}
+        <br><label>Encaminhada por:</label>
+        {{ form.encaminhado }}
+        <label>Ofertada para:</label>
+        {{ form.oferta }}
+      </div>
+      <div class="col">
+        <label>Infraestrutura:</label>
+        {{ form.infra }}
+        <label>Maquinário:</label>
+        {{ form.maquinario }}
+        <label>Observações:</label>
+        {{ form.obs }}
+      </div>
+    </div>
+    <div class="btn-row">
+  </div>
+  <div style="text-align: center; margin-bottom: 50px; margin-top: 30px;">
+    <input style="font-size: large;" class="btn btn-primary btn-sm active" type="submit" value="Salvar alterações">
+  </div>
+  </form>
+</div>
+<div class="body_content">
+  {% for img in imagens %}
+  <ul style="display: inline-block; list-style-type: none; padding: 0;">
+      <img id="myImg" onclick="onClick(this)" class="img_fazenda" 
+      src="/media/{{ img.imagem  }}" alt="">
+      <li>
+          <a style="text-align: center;" href="{% url 'delete_imagem' img.id %}">Delete</a>
+      </li>
+  </ul>
+  {% endfor %}
+  
+  <div id="myModal" class="modal">
+      <span class="close" onclick="">&times;</span>
+      <img class="modal-content" id="img01">
+      <div id="caption"></div>
+  </div>
+  <br>
+  {% for vid in videos %}
+  <ul style="display: inline-block; list-style-type: none; padding: 0;">
+    <video controls>
+      <source src="/media/{{ vid.video }}">
+    </video>
+      <li>
+          <a style="text-align: center;" href="{% url 'delete_video' vid.id %}">Delete</a>
+      </li>
+  </ul>
+  {% endfor %}
+  <br>
+  {% for aud in audios %}
+  <ul style="display: inline-block; list-style-type: none; padding: 0;">
+    <video controls>
+      <source src="/media/{{ aud.audio }}">
+    </video>
+      <li>
+          <a style="text-align: center;" href="{% url 'delete_audio' aud.id %}">Delete</a>
+      </li>
+  </ul>
+  {% endfor %}
+</div>
+<div style="text-align: center; margin-top: 10px; margin-bottom: 100px;">
+  <a class="btn btn-primary btn-sm active" style="font-size: large;" role="button" 
+  aria-pressed="true" href="{% url 'add_media' fazenda.pk %}">Adicionar Mídias</a>
+</div>
+</body>
+<script type="text/javascript">
+document.getElementsByClassName("close")[0].onclick = function() {
+    modal.style.display = "none";
+}
+</script>
+<footer style="margin-top: 100px;">
+
+</footer>
+{% endblock %}
