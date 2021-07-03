@@ -27,7 +27,7 @@ python3 manage.py runserver
 ```
 Rodando em:
 ```
-http://localhost:8080
+http://localhost:8000
 ```
 <hr>
 Referências do projeto:
