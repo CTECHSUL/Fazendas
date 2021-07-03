@@ -26,6 +26,7 @@ Rodando em:
 ```
 http://localhost:8080
 ```
+
 Referências do projeto:
 
 * [Django](https://www.djangoproject.com/)
