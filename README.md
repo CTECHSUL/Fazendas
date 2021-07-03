@@ -2,7 +2,7 @@
 
 * Setup inicial com Django 3.2 (Python 3.8.6)
 * Criação de modelo de dados para o mapeamento de entidades em bancos de dados
-* Desenvolvimento de operações de gerenciamento de fazendas (Cadastro, leitura e atualização).
+* Desenvolvimento de operações de gerenciamento de fazendas (Cadastro(com upload de arquivos), leitura e atualização).
 
 Para executar o projeto no terminal, digite o seguinte comando:
 
