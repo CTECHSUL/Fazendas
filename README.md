@@ -14,6 +14,9 @@ python3 -m pip install django
 python3 -m pip install django-money
 ```
 ```
+python3 -m pip install Pillow
+```
+```
 git clone https://github.com/CTECHSUL/Fazendas
 ```
 ```
@@ -37,6 +40,7 @@ Referências do projeto:
 
 * [Django](https://www.djangoproject.com/)
 * [SQLite](https://www.sqlite.org/index.html)
+* [Pillow](https://python-pillow.org/)
 * [Bootsrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 * [Django Money](https://github.com/django-money/django-money)
 * [FontAwasome](https://fontawesome.com/)
