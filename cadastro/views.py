@@ -6,6 +6,7 @@ from .models import Fazenda, FazendaMedia
 from .forms import FazendaForm, UploadMedia, SearchForm
 from django.core.cache import cache
 from .utils import deleteImagem, deleteVideo, deleteAudio
+import filetype
 
 
 def filtro_inicio(request):
@@ -46,6 +47,7 @@ def filtro_inicio(request):
                        "area_max": area_max,
                        "valor_min": valor_min,
                        "valor_max": valor_max}
+
         try:
             fazendas = Fazenda.objects.filter(estado__icontains=filter_dict["estado"],
                 municipio__icontains=filter_dict["municipio"],
@@ -184,28 +186,68 @@ class UploadView(FormView):
     form_class = UploadMedia
     template_name = 'cadastro/upload_media.html'
     success_url = 'cadastro' #Não estou usando
-
+    
+    #Daria para validar o arquivo no form e direcionar por tipo no create... Usando um únifo form de arquivos no template
     def post(self, request, *args, **kwargs):
         obj = cache.get(f"{request.META['CSRF_COOKIE']}")
         print(obj)
         form_class = self.get_form_class()
         form = self.get_form(form_class)
         imagens = request.FILES.getlist('imagens')
-        
         videos = request.FILES.getlist('videos')
         audios = request.FILES.getlist('audios')
 
+        for i in imagens:
+            imagem = filetype.guess(i)
+            try:
+                if imagem.MIME.split('/')[0] == 'image':
+                    print("Upload de imagem.")
+                else:
+                    print("TIPO DE ARQUIVO NÃO PERMITIDO.")
+                    return add_media(request, obj.pk)
+
+            except Exception as erro:
+                print("TIPO DE ARQUIVO NÃO PERMITIDO.")
+                return add_media(request, obj.pk)
+                pass
+
+        for v in videos:
+            video = filetype.guess(v)
+            try:
+                if video.MIME.split('/')[0] == 'video':
+                    print("Upload de vídeo.")
+                else:
+                    print("TIPO DE ARQUIVO NÃO PERMITIDO.")
+                    return add_media(request, obj.pk)
+
+            except Exception as erro:
+                print("TIPO DE ARQUIVO NÃO PERMITIDO.", erro)
+                return add_media(request, obj.pk)
+                pass
+
+        for a in audios:
+            audio = filetype.guess(a)
+            try:
+                if audio.MIME.split('/')[0] == 'audio':
+                    print("Upload de áudio.")
+                else:
+                    print("TIPO DE ARQUIVO NÃO PERMITIDO.")
+                    return add_media(request, obj.pk)
+
+            except Exception as erro:
+                print("TIPO DE ARQUIVO NÃO PERMITIDO.", erro)
+                return add_media(request, obj.pk)
+                pass
+        
+
         if form.is_valid():
-            print("teste")
-            print(imagens)
             for i in imagens:
-                print(i)
                 FazendaMedia.objects.create(fazenda_id=obj.pk, imagem=i)
             for v in videos:                
                 FazendaMedia.objects.create(fazenda_id=obj.pk, video=v)
             for a in audios:
                 FazendaMedia.objects.create(fazenda_id=obj.pk, audio=a)
-        
+
             return redirect(reverse('fazenda_view', kwargs={"pk":obj.pk}))
         
         else:
