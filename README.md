@@ -8,7 +8,7 @@ Para executar o projeto:
 
 shell script
 ```
-python3 -m pip install django django-money Pillow
+python3 -m pip install django django-money Pillow filetype
 ```
 ```
 git clone https://github.com/CTECHSUL/Fazendas
@@ -35,6 +35,7 @@ Referências do projeto:
 * [Django](https://www.djangoproject.com/)
 * [SQLite](https://www.sqlite.org/index.html)
 * [Pillow](https://python-pillow.org/)
+* [filetype](https://github.com/h2non/filetype.py)
 * [Bootsrap](https://getbootstrap.com/docs/4.1/getting-started/introduction/)
 * [Django Money](https://github.com/django-money/django-money)
 * [FontAwasome](https://fontawesome.com/)
