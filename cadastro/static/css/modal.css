@@ -31,6 +31,11 @@
 
 }
 
+.video_fazenda{
+  
+
+}
+
 /* Add a hover effect (blue shadow) */
 .img_fazendas:hover {
   -webkit-transition: all .3s;
@@ -111,6 +116,11 @@
     width: 320px;
     height: 255px;
         
+  }
+  .video_fazenda{
+    width: 320px;
+    height: 255px;
+  
   }
   .modal-content {
     width: 100%;
