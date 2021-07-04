@@ -1,4 +1,3 @@
-<<<<<<< HEAD
 .body_content {
   width: 100%;
   text-align: center;
@@ -31,11 +30,10 @@
   margin-bottom: 5px;
 
 }
-
-.video_fazenda{
-  
-
+.video_fazenda {
+  vertical-align: middle;
 }
+
 
 /* Add a hover effect (blue shadow) */
 .img_fazendas:hover {
@@ -134,3 +132,4 @@
   border-radius: 5px;
   cursor: pointer;
   transition: 0.3s;
+}
