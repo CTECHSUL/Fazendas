@@ -47,10 +47,16 @@ def removeAnyFile():
         if m.audio != '':
             arquivos_db.append(str(m.audio).split('/')[1])
 
-    for imagem, video, audio in zip(imagens_content, videos_content, audios_content):
+    for imagem in imagens_content:
         if imagem not in arquivos_db:
             os.remove(f'C:\\fazendas\\fazendas\\media\\imagens\\{imagem}')
+
+    for video in videos_content:
         if video not in arquivos_db:
-            os.remove(f'C:\\fazendas\\fazendas\\media\\videos\\{video}')
+            os.remove(f'C:\\fazendas\\fazendas\\media\\imagens\\{video}')
+
+    for audio in audios_content:
         if audio not in arquivos_db:
-            os.remove(f'C:\\fazendas\\fazendas\\media\\audios\\{audio}')
+            os.remove(f'C:\\fazendas\\fazendas\\media\\imagens\\{audio}')
+
+removeAnyFile()
