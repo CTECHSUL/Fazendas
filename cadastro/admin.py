@@ -1,3 +1,4 @@
 from django.contrib import admin
+from cadastro.models import Fazenda, FazendaMedia
 
-# Register your models here.
+admin.site.register(Fazenda)
