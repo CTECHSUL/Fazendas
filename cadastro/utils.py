@@ -58,5 +58,3 @@ def removeAnyFile():
     for audio in audios_content:
         if audio not in arquivos_db:
             os.remove(f'C:\\fazendas\\fazendas\\media\\imagens\\{audio}')
-
-removeAnyFile()
