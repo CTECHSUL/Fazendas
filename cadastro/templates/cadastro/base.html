@@ -20,25 +20,23 @@
   <div id="menu" class="menu">
     <a href="{% url 'inicio' %}"><img id="logo" class="logo" src="{% static 'imagens/CUT_fazendas.png' %}" alt=""></a>
     <div class="menu_right" id="menu_principal">
-      <a class="btn_menu" href="{% url 'inicio' %}">Início</a>
-      <a class="btn_menu" href="{% url 'cadastro' %}">Cadastro</a>
-      <a class="btn_menu" href="#">Logar</a>
-      <a class="btn_menu" href="#">Sair</a>
+      <a id="btn_menu" class="btn_menu" href="{% url 'inicio' %}">Início</a>
+      <a id="btn_menu" class="btn_menu" href="{% url 'cadastro' %}">Cadastro</a>
+      <a id="btn_menu" class="btn_menu" href="{% url 'logout' %}">Sair</a>
     </div>
     <div class="menu_right" id="icon_menu" >
       <a href="javascript:void(0)" onclick="menuFunc()" class="icon_menu"><i id="icon_btn" class="fa fa-bars"></i></a>
       <img class="menu_right" id="logo_mobile" src="{% static 'imagens/CUT_fazendas.png' %}">
     </div>
     <div id="endereco_row" class="endereco">
-      <img id="logo_icon" class="logo_icon" src="{% static 'imagens/CSTECH_COMPLETE_ICON.ico' %}" alt="">
+      <a href="https://card.gconelhero.ga"><img id="logo_icon" class="logo_icon" src="{% static 'imagens/CSTECH_COMPLETE_ICON.ico' %}" alt=""></a>
     </div>
   </div> 
     <div class="list_menu" id="list_menu">
       <ul class="list" id="list">
         <li><a href="{% url 'inicio' %}">Início</a></li>
         <li><a href="{% url 'cadastro' %}">Cadastro</a></li>
-        <li><a href="#">Logar</a></li>
-        <li><a href="#">Sair</a></li>
+        <li><a href="{% url 'logout' %}">Sair</a></li>
         <li style="align-items: center;"><img id="logo_icon" class="logo_icon" src="{% static 'imagens/CSTECH_COMPLETE_ICON.ico' %}" alt=""></li>
       </ul>
     </div>
@@ -51,8 +49,8 @@
   <footer class="page-footer font-small blue">
     <div class="footer-copyright text-center py-3">© 2021 Copyright:
       <a href="{% url 'inicio' %}">FAZENDAS</a>
-      <p>Website by: <a href="https://google.com"><img style="width: 35px;" src="{% static 'imagens/CSTECH_COMPLETE_ICON_CUT.png' %}"/></a></p>
-      <p>Contact information: <a href="mailto:email@teste.com">cstech@protonmail.com</a></p>
+      <p>Website by: <a href="https://card.gconelhero.ga"><img style="width: 35px;" src="{% static 'imagens/CSTECH_COMPLETE_ICON_CUT.png' %}"/></a></p>
+      <p>Contact information: <a href="mailto:cstech@protonmail.com">cstech@protonmail.com</a></p>
     </div>
   </footer>
   </body>

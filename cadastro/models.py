@@ -76,6 +76,8 @@ class Fazenda(models.Model):
         help_text="Ofertada para."
     )
 
+    def __str__(self):
+        return "{} ({})".format(self.estado, self.area_total)
 
 class FazendaMedia(models.Model):
 
@@ -104,3 +106,6 @@ class FazendaMedia(models.Model):
         upload_to='audios/',
         
     )
+
+    def __str__(self):
+        return "{} {} {}".format(self.imagem, self.video, self.audio)

@@ -1,0 +1,20 @@
+{% extends 'cadastro/base.html' %}
+
+{% block content %}
+
+{% load static %}
+
+<div style="margin-top: 100px;">
+<form class="form-group" style="text-align: center;" method="post">  
+  {% csrf_token %}
+
+  {% for field in form %}
+  {{field.label}}<br>
+  {{field}}<br><br>
+  {% endfor %}
+  
+  <button class="btn btn-outline-success my-2 my-sm-0" type="submit">Entrar</button>
+</form>
+
+{% endblock %}
+</div>
