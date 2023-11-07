@@ -10,11 +10,6 @@ git clone https://github.com/gconelhero/Fazendas
 cd Fazendas
 python3 -m pip install -r requirements.txt
 ```
-Edit fazendas/settings.py to run on localhost
-```
-ALLOWED_HOSTS = ['192.168.0.13']
-ALLOWED_HOSTS = []
-```
 Run:
 ```
 python3 manage.py makemigrations
