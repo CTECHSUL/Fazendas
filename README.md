@@ -1,10 +1,10 @@
 <h1>Cadastro de fazendas</h1>
 
-* Setup inicial com Django 3.2 (Python 3.8.6) e SQLite 3.12.2
-* Criação de modelo de dados para o mapeamento de entidades em bancos de dados
-* Desenvolvimento de operações de gerenciamento de fazendas (Cadastro(com upload de arquivos), leitura e atualização).
+* Setup Django 3.2 (Python 3.8.6).
+* Creation of a data model for mapping entities in databases.
+* Development of farm management operations (Registration (with file upload), reading and updating).
 
-Para executar o projeto:
+Run:
 
 shell script
 ```
@@ -16,13 +16,15 @@ git clone https://github.com/CTECHSUL/Fazendas
 ```
 cd Fazendas
 ```
-Editar o arquivo fazendas/settings.py para rodar em localhost
+Edit fazendas/settings.py to run in localhost
 ```
 ALLOWED_HOSTS = ['192.168.0.13']
 ALLOWED_HOSTS = []
 ```
-Depois:
+Run:
 ```
+python3 manage.py makemigrations
+python3 manage.py migrate
 python3 manage.py runserver
 ```
 Rodando em:
