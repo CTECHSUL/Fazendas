@@ -5,16 +5,10 @@
 * Development of farm management operations (Registration (with file upload), reading and updating).
 
 Run:
-
-shell script
-```
-python3 -m pip install django django-money Pillow filetype
-```
 ```
 git clone https://github.com/gconelhero/Fazendas
-```
-```
 cd Fazendas
+python3 -m pip install -r requirements.txt
 ```
 Edit fazendas/settings.py to run on localhost
 ```
