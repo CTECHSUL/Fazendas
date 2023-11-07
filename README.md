@@ -16,7 +16,7 @@ git clone https://github.com/CTECHSUL/Fazendas
 ```
 cd Fazendas
 ```
-Edit fazendas/settings.py to run in localhost
+Edit fazendas/settings.py to run on localhost
 ```
 ALLOWED_HOSTS = ['192.168.0.13']
 ALLOWED_HOSTS = []
@@ -26,10 +26,6 @@ Run:
 python3 manage.py makemigrations
 python3 manage.py migrate
 python3 manage.py runserver
-```
-Rodando em:
-```
-http://localhost:8000
 ```
 <hr>
 Referências do projeto:
