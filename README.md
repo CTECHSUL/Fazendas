@@ -1,8 +1,9 @@
+Development of farm management operations (Registration (with file upload), reading and updating).
+
 <h1>Cadastro de fazendas</h1>
 
-* Setup Django 3.2 (Python 3.8.6).
+* Setup with (Python 3.8.6).
 * Creation of a data model for mapping entities in databases.
-* Development of farm management operations (Registration (with file upload), reading and updating).
 
 Run:
 ```
