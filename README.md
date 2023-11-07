@@ -11,7 +11,7 @@ shell script
 python3 -m pip install django django-money Pillow filetype
 ```
 ```
-git clone https://github.com/CTECHSUL/Fazendas
+git clone https://github.com/gconelhero/Fazendas
 ```
 ```
 cd Fazendas
